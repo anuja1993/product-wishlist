@@ -1,24 +1,21 @@
 import Head from "next/head";
-import Image from "next/image";
-import styles from "../styles/Home.module.css";
-import ProductsList from "../components/product/products-list";
+import ProductsList from "../../components/product/products-list";
 import React from "react";
 import { MongoClient } from "mongodb";
 
-function ProductsListPage(props) {
-  const { products } = props;
+function FavouriteListPage(props) {
+  const { wishedProducts } = props;
 
   return (
     <React.Fragment>
       <Head>
-        <title>Products</title>
+        <title>Favourite</title>
         <meta
           name="description"
-          description="best products based on user ratings"
+          description="best wishedProducts based on user ratings"
         ></meta>
-        <link rel="icon" href="/favicon.ico" />
       </Head>
-      <ProductsList products={products}></ProductsList>
+      <ProductsList products={wishedProducts}></ProductsList>
     </React.Fragment>
   );
 }
@@ -33,18 +30,22 @@ export async function getServerSideProps() {
   // load db from mongo clinet
   const db = client.db();
 
-  // load existing products from product db collection
-  const productsCollections = db.collection("product");
+  // load existing data from db collection(db table)
+  const wishedProductCollection = db.collection("product");
 
-  // load products new data to collection
-  const products = await productsCollections.find().toArray();
+  // insert new data to collection
+  const wishedProducts = await wishedProductCollection
+    .find({
+      "info.liked": true,
+    })
+    .toArray();
 
   // close mongo client connection
   client.close();
 
   return {
     props: {
-      products: products.map((product) => ({
+      wishedProducts: wishedProducts.map((product) => ({
         id: product._id.toString(),
         seller: product.seller,
         item: product.item,
@@ -54,4 +55,4 @@ export async function getServerSideProps() {
   };
 }
 
-export default ProductsListPage;
+export default FavouriteListPage;
