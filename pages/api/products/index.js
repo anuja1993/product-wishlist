@@ -1,5 +1,10 @@
 import database from "../../../middleware/database";
 
+/**
+ * product loading handler
+ * @param req 
+ * @param res 
+ */
 export async function handler(req, res) {
 
   // load db from mongo clinet

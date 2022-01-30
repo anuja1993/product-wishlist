@@ -13,6 +13,10 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
+/**
+ * triggers when user click navigation link
+ * @param {navigation item} item 
+ */
 function onClickNavigation(item) {
   navigation.map((navigation) =>
     navigation.href === item.href

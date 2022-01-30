@@ -3,6 +3,11 @@ import ProductsList from "../../components/product/products-list";
 import React from "react";
 import { MongoClient } from "mongodb";
 
+/**
+ * Favourite products list page
+ * @param props 
+ * @returns 
+ */
 function FavouriteListPage(props) {
   const { wishedProducts } = props;
 

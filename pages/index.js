@@ -5,6 +5,11 @@ import ProductsList from "../components/product/products-list";
 import React from "react";
 import { MongoClient } from "mongodb";
 
+/**
+ * Products list page
+ * @param props 
+ * @returns 
+ */
 function ProductsListPage(props) {
   const { products } = props;
 

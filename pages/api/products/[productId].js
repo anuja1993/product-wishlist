@@ -1,6 +1,10 @@
 import { MongoClient, ObjectId } from "mongodb";
-import database from "../../../middleware/database";
 
+/**
+ * Product update handler
+ * @param req 
+ * @param res 
+ */
 export async function handler(req, res) {
   const productPayload = req.body;
 
