@@ -14,9 +14,9 @@ module.exports = (phase) => {
 
   return {
     env: {
-      mongodb_username: "develop",
-      mongodb_password: "develop",
-      mongodb_clustername: "product-wishlist-cluster",
+      mongodb_username: "demo",
+      mongodb_password: "demo",
+      mongodb_clustername: "product-wishlist-cluste",
       mongodb_database: "product_db",
     },
   };
